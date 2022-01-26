@@ -22,7 +22,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: HomePage(),
+      home: const HomePage(),
     );
   }
 }

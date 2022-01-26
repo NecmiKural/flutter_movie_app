@@ -73,12 +73,22 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Expanded(
-            flex: 2,
-            child: Container(
-              child: Image.network(
-                'https://image.tmdb.org/t/p/original' + popularMovies.imageUrl,
-                fit: BoxFit.contain,
-              ),
+            flex: 3,
+            child: Image.network(
+              'https://image.tmdb.org/t/p/original' + popularMovies.imageUrl,
+              fit: BoxFit.fill,
+              loadingBuilder: (BuildContext context, Widget child,
+                  ImageChunkEvent? loadingProgress) {
+                if (loadingProgress == null) return child;
+                return Center(
+                  child: CircularProgressIndicator(
+                    value: loadingProgress.expectedTotalBytes != null
+                        ? loadingProgress.cumulativeBytesLoaded /
+                            loadingProgress.expectedTotalBytes!
+                        : null,
+                  ),
+                );
+              },
             ),
           ),
           Column(
