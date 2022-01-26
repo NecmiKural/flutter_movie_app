@@ -7,8 +7,8 @@ class PopularMovies {
   });
 
   factory PopularMovies.fromJson(Map<String, dynamic> map) {
-    return PopularMovies(name: map["original_title"],
-                         imageUrl: map["poster_path"]);
+    return PopularMovies(
+        name: map["original_title"], imageUrl: map["poster_path"]);
   }
 
   @override

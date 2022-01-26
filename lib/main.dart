@@ -16,6 +16,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // TODO: add theme change option
       debugShowCheckedModeBanner: false,
       title: "Movie App",
       theme: ThemeData(
