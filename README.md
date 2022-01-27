@@ -1,16 +1,5 @@
-# movie_app
+## Movie App
 
-A new Flutter project.
+Main page is look like that right now
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![alt text](https://cdn.discordapp.com/attachments/252814654114365441/936286255463956490/com.example.movie_app_Screenshot_2022.01.27_18.46.32.png)
