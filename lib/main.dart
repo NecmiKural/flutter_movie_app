@@ -16,12 +16,14 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // TODO: add theme change option
       debugShowCheckedModeBanner: false,
       title: "Movie App",
+      // https://discord.com/channels/145199608631394304/252814654114365441/936226079620886568
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
+      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.system,
       home: const HomePage(),
     );
   }

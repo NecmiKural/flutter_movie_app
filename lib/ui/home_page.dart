@@ -3,7 +3,6 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:movie_app/models/popular_movies.dart';
 import 'package:movie_app/ui/widgets/detail_page.dart';
-// import 'package:movie_app/ui/widgets/homepage_list_item.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,6 +13,9 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   List? popularMovies;
+
+  static final ValueNotifier<ThemeMode> themeNotifier =
+      ValueNotifier(ThemeMode.light);
 
   @override
   void initState() {
@@ -37,30 +39,52 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Center(
-          child: Text("Popular Movies"),
-        ),
-      ),
-      body: (popularMovies == null)
-          ? const Center(
-              child: CircularProgressIndicator(),
-            )
-          : CustomScrollView(
-              slivers: [
-                SliverGrid(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                      return gridItemWidget(popularMovies![index]);
-                    },
-                    childCount: popularMovies!.length,
-                  ),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3),
-                ),
+    return ValueListenableBuilder<ThemeMode>(
+      valueListenable: themeNotifier,
+      builder: (_, ThemeMode currentMode, __) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(primarySwatch: Colors.red),
+          darkTheme: ThemeData.dark(),
+          themeMode: currentMode,
+          home: Scaffold(
+            appBar: AppBar(
+              title: const Center(child: Text("Popular Movies")),
+              actions: [
+                IconButton(
+                    icon: Icon(themeNotifier.value == ThemeMode.light
+                        ? Icons.dark_mode
+                        : Icons.light_mode),
+                    onPressed: () {
+                      themeNotifier.value =
+                          themeNotifier.value == ThemeMode.light
+                              ? ThemeMode.dark
+                              : ThemeMode.light;
+                    })
               ],
             ),
+            body: (popularMovies == null)
+                ? const Center(
+                    child: CircularProgressIndicator(),
+                  )
+                : CustomScrollView(
+                    slivers: [
+                      SliverGrid(
+                        delegate: SliverChildBuilderDelegate(
+                          (context, index) {
+                            return gridItemWidget(popularMovies![index]);
+                          },
+                          childCount: popularMovies!.length,
+                        ),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3),
+                      ),
+                    ],
+                  ),
+          ),
+        );
+      },
     );
   }
 
