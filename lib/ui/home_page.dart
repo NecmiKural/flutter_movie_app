@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:movie_app/models/popular_movies.dart';
 import 'package:movie_app/ui/widgets/detail_page.dart';
+import 'package:movie_app/ui/widgets/nav_drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -47,6 +48,8 @@ class _HomePageState extends State<HomePage> {
           darkTheme: ThemeData.dark(),
           themeMode: currentMode,
           home: Scaffold(
+            // TODO: add tabs
+            drawer: const NavDrawer(),
             appBar: AppBar(
               title: const Center(child: Text("Popular Movies")),
               actions: [
