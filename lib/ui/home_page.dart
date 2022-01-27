@@ -28,7 +28,6 @@ class _HomePageState extends State<HomePage> {
         "https://api.themoviedb.org/3/movie/popular?api_key=8ace14f52e7963ff835c51bbf1e7393f&language=en-US&page=1");
     // TODO: add language option
     var response = await http.get(url);
-    // TODO: use status code
     var responseBody = jsonDecode(response.body);
     popularMovies = responseBody["results"]
         .map((map) => PopularMovies.fromJson(map))
@@ -135,7 +134,7 @@ class _HomePageState extends State<HomePage> {
       context,
       MaterialPageRoute(
         builder: (context) {
-          return const DetailPage();
+          return DetailPage(themeNotifier);
         },
       ),
     ).then((value) {

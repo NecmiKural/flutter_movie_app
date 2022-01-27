@@ -19,6 +19,7 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: "Movie App",
       // https://discord.com/channels/145199608631394304/252814654114365441/936226079620886568
+      // TODO: bring theme change option here
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
