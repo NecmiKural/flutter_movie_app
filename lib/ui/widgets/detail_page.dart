@@ -34,7 +34,7 @@ class _DetailPageState extends State<DetailPage> {
                     Text(
                       widget.movies!.name,
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                          const TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                     ),
                     Center(
                       child: Padding(
