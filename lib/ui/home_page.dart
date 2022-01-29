@@ -93,7 +93,7 @@ class _HomePageState extends State<HomePage> {
   Widget gridItemWidget(PopularMovies popularMovies) {
     return InkWell(
       onTap: () {
-        goToDetailPage();
+        goToDetailPage(popularMovies);
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -132,12 +132,12 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  void goToDetailPage() {
+  void goToDetailPage(PopularMovies popularMovies) {
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: (context) {
-          return DetailPage(themeNotifier);
+          return DetailPage(movies: popularMovies);
         },
       ),
     ).then((value) {

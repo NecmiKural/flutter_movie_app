@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:movie_app/models/popular_movies.dart';
 
 class DetailPage extends StatefulWidget {
-  const DetailPage(ValueNotifier<ThemeMode> themeNotifier, {Key? key})
-      : super(key: key);
+  PopularMovies? movies;
+  // DetailPage({this.movies});
+  DetailPage({Key? key, this.movies}) : super(key: key);
+// https://discord.com/channels/145199608631394304/252814654114365441/936902226096562176
 
   @override
   _DetailPageState createState() => _DetailPageState();
@@ -21,15 +24,15 @@ class _DetailPageState extends State<DetailPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Expanded(
-                  child: Image.network(
-                      "https://images.squarespace-cdn.com/content/v1/5acd17597c93273e08da4786/1547847934765-ZOU5KGSHYT6UVL6O5E5J/Shrek+Poster.png"),
+                  child: Image.network('https://image.tmdb.org/t/p/original' +
+                      widget.movies!.imageUrl),
                 ),
               ),
               Center(
                 child: Column(
                   children: [
-                    const Text(
-                      "MovieName",
+                    Text(
+                      widget.movies!.name,
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                     ),
